@@ -58,8 +58,8 @@ array([[0.        , 0.22222222],
 - `MqPLHS`: **Monte Carlo quasi-Latin Hypercube Sampling (MqPLHS)**
   
 ### Other Sampling Strategies
-- **Full-Factorial (FF)**
-- **Latin Hypercube Sampling (LHS)**
+- `floor_FF`: **Full-Factorial (FF)**
+- `LHS_light`: **Latin Hypercube Sampling (LHS)**
 - `sobol`: **Sobol Sequences**
 - `halton`: **Halton Sequences**
   
