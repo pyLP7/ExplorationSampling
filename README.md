@@ -17,7 +17,7 @@ Python 3.6 or higher with the following dependencies:
 - `chaospy`
 - Custom modules: `utils.util_functions`, `utils.objective_functions`, `utils.FpPLHS`, `utils.MqPLHS`
 
-## Examples
+## Example
 
 Example of a 2D adaptive sampling process using the `MIPT-alpha` strategy. 
 
