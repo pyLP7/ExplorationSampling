@@ -49,3 +49,22 @@ array([[0.        , 0.22222222],
        [0.35492581, 0.6928599 ],
        [0.02270393, 0.80520333],
        [0.68483468, 0.57443643]])
+```
+
+## Available Sampling Techniques
+### Adaptive sampling 
+- `MIPT`: **MIPT-alpha** 
+- `FpPLHS`: **Fluttering perfect-Progressive Latin Hypercube Sampling (FpPLHS)**
+- `MqPLHS`: **Monte Carlo quasi-Latin Hypercube Sampling (MqPLHS)**
+  
+### Other Sampling Strategies
+- **Full-Factorial (FF)**
+- **Latin Hypercube Sampling (LHS)**
+- `sobol`: **Sobol Sequences**
+- `halton`: **Halton Sequences**
+  
+### References
+
+If you use part of the work consider citing:
+
+Pietro Lualdi, Ralf Sturm, Tjark Siefkes: "Exploration-oriented sampling strategies for global surrogate modeling: A comparison between one-stage and adaptive methods", Journal of Computational Science, Volume 60, 2022."
