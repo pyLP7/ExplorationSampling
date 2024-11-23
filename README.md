@@ -93,4 +93,5 @@ Lower image sample positions (black dots), new found sample (red dot) and local 
 ### References
 
 If you use part of the work consider citing:
+
 Pietro Lualdi, Ralf Sturm, Tjark Siefkes: "Exploration-oriented sampling strategies for global surrogate modeling: A comparison between one-stage and adaptive methods", Journal of Computational Science, Volume 60, 2022.
