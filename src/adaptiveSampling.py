@@ -15,6 +15,8 @@ if __name__ == "__main__":
     # gen_doe_FpPLHS = DOE_class.DOE_Class('FpPLHS', repeat=random_seed, sizeOneStage=10).DOE
 
     # Generate the DoE and store it in X
-    X = gen_doe_MIPT(dd,nn)
+    print(gen_doe_MIPT(dd,nn))
+    
+
 
     

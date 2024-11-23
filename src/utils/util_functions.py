@@ -31,7 +31,7 @@ def load_optimal_doe(dd, nn, pickle_name=None):
     
     # Load Pickle
     if not pickle_name:
-        pickle_name = os.getcwd() + '/DOE/opti_LHS_database.p'
+        pickle_name = os.getcwd() + '/utils/DOE/opti_LHS_database.p'
 
     with open(pickle_name, 'rb') as f:
         lhs_indexes = pickle.load(f)
