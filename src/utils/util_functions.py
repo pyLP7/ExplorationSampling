@@ -4,7 +4,6 @@ import pickle
 import numpy as np
 import chaospy as cp
 
-
 def load_optimal_doe(dd, nn, pickle_name=None):
     """Load optimized LHS from https://spacefillingdesigns.nl/ database:
 
@@ -29,6 +28,7 @@ def load_optimal_doe(dd, nn, pickle_name=None):
     Numpy Array containing optimised DOE
 
     """
+    
     # Load Pickle
     if not pickle_name:
         pickle_name = os.getcwd() + '/DOE/opti_LHS_database.p'
@@ -54,7 +54,7 @@ def load_optimal_doe(dd, nn, pickle_name=None):
         return None
 
 
-def get_initial_lhs(lhs,  num_dims, num_points_start,):
+def get_initial_lhs(lhs,  num_dims, num_points_start, verbose=True):
     """If lhs is none, attempt to get LHS from https://spacefillingdesigns.nl/
 
     If this is not possible, generate the LHS using create_latin_hypercube_samples"""
@@ -64,9 +64,8 @@ def get_initial_lhs(lhs,  num_dims, num_points_start,):
 
     if type(lhs) is not np.ndarray:
         lhs = cp.create_latin_hypercube_samples(order=num_points_start, dim=num_dims).T
-
-    print(f'LHS with {lhs.shape[0]} points and {lhs.shape[1]} dimensions retrieved.')
+        
+    if verbose:
+        print(f'LHS with {lhs.shape[0]} points and {lhs.shape[1]} dimensions retrieved.')
     
-    # lhs = lhs.astype(np.float32)
-
     return lhs

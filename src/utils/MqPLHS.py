@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Nov 27 11:19:56 2021
-
-@author: lual_pi
-
-"""
 import chaospy as cp
 import matplotlib.pyplot as plt
 import numpy as np
@@ -177,7 +170,7 @@ def check_if_lhs(bool_lhs, interval_start, interval_stop, is_edge_case, num_poin
     return result
 
 
-def mc_quasi_lhs( num_dims, num_points_max, num_points_start, n_rand_points=100):
+def mc_quasi_lhs( num_dims, num_points_max, num_points_start, n_rand_points=100, verbose=True):
     """Find the best selection of points to add a latin hypercube to maintain
     its qualities and raise the number of poitns to num_points_max.
 
@@ -210,7 +203,6 @@ def mc_quasi_lhs( num_dims, num_points_max, num_points_start, n_rand_points=100)
         lhs = cp.create_latin_hypercube_samples(order=num_points_start, dim=num_dims).T
     lhs = cp.create_latin_hypercube_samples(order=num_points_start, dim=num_dims).T # DEL
 
-    # print(f'Initial latin hypercube with {lhs.shape[0]} points and {lhs.shape[1]} dimensions retrieved.  Adding points...')
     for i in range(num_points_max - num_points_start):
         # Generate a random set of candidate points to be added to the LHS
         candidate_points = np.random.rand(num_points_start*n_rand_points, num_dims)
@@ -237,8 +229,9 @@ def mc_quasi_lhs( num_dims, num_points_max, num_points_start, n_rand_points=100)
         
         # collect the final candidate
         lhs = np.vstack((lhs, best_cand))
-
-        print(f'nn qLHS: {num_points_start + i + 1}')
+        
+        if verbose:
+            print(f'nn qLHS: {num_points_start + i + 1}')
 
     return lhs
             
@@ -257,5 +250,4 @@ if __name__ == '__main__':
     num_dims = 3
     
     lhs = mc_quasi_lhs(num_points_start, num_dims, num_points_max)
-    # score = check_if_lhs_single(lhs)
-    # print(score)
+

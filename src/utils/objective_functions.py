@@ -2,7 +2,6 @@ import numpy as np
 from numba import jit
 from scipy.spatial.distance import cdist
 
-
 def min_intersite_distances(arr, new_points):
     """Find the minimum intersite distance between :param:`arr` and each new point
 
@@ -17,6 +16,7 @@ def min_intersite_distances(arr, new_points):
         Returns
         -------
         The minimum intersite distance between each new point and every point in arr"""
+        
     num_points, num_dims = arr.shape
     num_new_points, num_dims_new_points = new_points.shape
 
@@ -32,7 +32,6 @@ def min_intersite_distances(arr, new_points):
 
     return minimum_intersite_distances
 
-
 def min_projected_distances(arr, new_points):
     """Calculate the minimum projected distance between :param:`arr` and each new point
 
@@ -47,6 +46,7 @@ def min_projected_distances(arr, new_points):
         Returns
         -------
         The minimum projected distance between each new point and every point in arr"""
+        
     num_points, num_dims = arr.shape
     num_new_points, num_dims_new_points = new_points.shape
 
@@ -66,7 +66,6 @@ def min_projected_distances(arr, new_points):
         minimum_projected_distances[i] = np.min(projected_distances)
 
     return minimum_projected_distances
-
 
 def lhs_scores(arr, new_points):
     """Find LHS scores of arr when each new point is added to it
@@ -93,6 +92,7 @@ def lhs_scores(arr, new_points):
     Returns
     -------
     Scores of each new point according to the :meth:`check_if_lhs` method."""
+    
     num_points, num_dims = arr.shape
 
     num_new_points, num_dims_new_points = new_points.shape
@@ -130,7 +130,6 @@ def lhs_scores(arr, new_points):
 
     return scores
 
-
 @jit(nopython=True, fastmath=True)
 def check_each_point(new_points_tiled, bool_lhs, spaces_to_fill, interval_start,
                      interval_stop, is_edge_case, num_points, num_dims):
@@ -159,6 +158,7 @@ def check_each_point(new_points_tiled, bool_lhs, spaces_to_fill, interval_start,
     Returns
     -------
     Numpy Array containing score of each new function"""
+    
     scores = np.empty((new_points_tiled.shape[0]))
     for i, new_point in enumerate(new_points_tiled):
         score = check_if_lhs(
@@ -174,7 +174,6 @@ def check_each_point(new_points_tiled, bool_lhs, spaces_to_fill, interval_start,
         scores[i] = score
 
     return scores
-
 
 @jit(nopython=True, parallel=True, fastmath=True)
 def check_if_lhs(bool_lhs, new_point, spaces_to_fill, interval_start, interval_stop, is_edge_case, num_points,
@@ -212,6 +211,7 @@ def check_if_lhs(bool_lhs, new_point, spaces_to_fill, interval_start, interval_s
     Returns
     -------
     The sum of the matrix yy, divided by (num_points * num_dimensions)"""
+    
     bool_lhs[spaces_to_fill] = new_point
 
     is_in_interval = np.logical_and(bool_lhs >= interval_start, bool_lhs < interval_stop)
@@ -253,6 +253,7 @@ def lhs_score_single(arr, return_matrix=False):
     Returns
     -------
     The sum of the matrix yy, divided by (num_points * num_dimensions)"""
+    
     num_points, num_vars = arr.shape
 
     interval_start = np.arange(num_points) / num_points

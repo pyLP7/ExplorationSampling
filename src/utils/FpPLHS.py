@@ -1,11 +1,11 @@
 import copy
 import numpy as np
 import chaospy as cp
-# from check_lhs import check_if_lhs
-from utils.util_functions import get_initial_lhs
 
 from scipy.spatial import distance_matrix
 from scipy.spatial.distance import cdist
+
+from utils.util_functions import get_initial_lhs
 
 import matplotlib.pyplot as plt
 plt.close('all')
@@ -102,7 +102,7 @@ def uniform_lhs(lower_limits, upper_limits):
     return lhs_slice
 
 
-def mc_intersite_proj_th_loop(dd=2, nn_start=10,limit_nn=144, repeat=False):
+def mc_intersite_proj_th_loop(dd=2, nn_start=10,limit_nn=144, repeat=False, verbose=True):
     '''
     This function runs the mc-inter-proj-th algorithm and returns an adaptive generated DOE
     
@@ -133,7 +133,7 @@ def mc_intersite_proj_th_loop(dd=2, nn_start=10,limit_nn=144, repeat=False):
         # lhs_slice = uniform_lhs(low_lim, upp_lim)
         slices = [uniform_lhs(low_lim, upp_lim) for ii in range(10*nn)]
         
-        # %% 2.1 improve the space filling of the slice
+        # 2.1 improve the space filling of the slice
         res_slices = []
         for ii in slices:
             lhs_temp = np.vstack((lhs, ii))
@@ -142,17 +142,16 @@ def mc_intersite_proj_th_loop(dd=2, nn_start=10,limit_nn=144, repeat=False):
         best_index = np.where(res_slices == np.max(res_slices))
         lhs_slice = slices[best_index[0][0]]
         
-        # %%
-        
         # 3 - consider each point of the slice one-by-one and add the one that guarantees the best space-filling prop
         while len(lhs_slice) >= 1 and nn < limit_nn:
             res = []
             for jj in lhs_slice:
-                res.append(intersite_distance(lhs, newpoint=jj)) # try the CDM crowding_distance_metric
+                res.append(intersite_distance(lhs, newpoint=jj)) 
                 
             # find the best point (maximize the ObjFunc)
             best_index = np.where(res == np.max(res))
             bestpoint = lhs_slice[best_index]
+            
             # add the best one
             lhs = np.vstack((lhs,bestpoint))
             
@@ -162,7 +161,8 @@ def mc_intersite_proj_th_loop(dd=2, nn_start=10,limit_nn=144, repeat=False):
 
             #current grid
             nn, dd = lhs.shape
-            print('Iteration PLHS: '+str(nn))
+            if verbose:
+                print('Iteration PLHS: '+str(nn))
             # plot_2d(lhs)
             
     return lhs

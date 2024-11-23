@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Feb  7 12:30:07 2022
-
-@author: lual_pi
-"""
-
 import numpy as np
 
 # %% test functions used for evaluation
