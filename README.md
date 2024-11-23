@@ -93,6 +93,4 @@ Lower image sample positions (black dots), new found sample (red dot) and local 
 ### References
 
 If you use part of the work consider citing:
-Fuhg, Jan N., Amélie Fau, and Udo Nackenhorst. "State-of-the-Art and Comparative Review of Adaptive Sampling Methods for Kriging." Archives of Computational Methods in Engineering (2020): 1-59.
-
 Pietro Lualdi, Ralf Sturm, Tjark Siefkes: "Exploration-oriented sampling strategies for global surrogate modeling: A comparison between one-stage and adaptive methods", Journal of Computational Science, Volume 60, 2022.
