@@ -67,4 +67,7 @@ array([[0.        , 0.22222222],
 
 If you use part of the work consider citing:
 
-Pietro Lualdi, Ralf Sturm, Tjark Siefkes: "Exploration-oriented sampling strategies for global surrogate modeling: A comparison between one-stage and adaptive methods", Journal of Computational Science, Volume 60, 2022."
+Pietro Lualdi, Ralf Sturm & Tjark Siefkes. "Exploration-oriented sampling strategies for global surrogate modeling: A comparison between one-stage and adaptive methods", *Journal of Computational Science, Volume 60,* 2022 ([https://doi.org/10.1016/j.jocs.2022.101501](https://www.sciencedirect.com/science/article/abs/pii/S1877750322000357)).
+
+
+
